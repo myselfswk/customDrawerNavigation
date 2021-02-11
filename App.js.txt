@@ -1,0 +1,107 @@
+import 'react-native-gesture-handler';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import {
+  Container,
+  Content,
+  Text,
+  Header,
+  Left,
+  Body,
+  Title,
+  Right,
+  Item,
+  Icon
+} from "native-base";
+
+const Drawer = createDrawerNavigator();
+
+function HomeScreen(navigation) {
+  return (
+    <Container>
+      <Header>
+        <Left style={{ flex: 0.1 }} />
+        <Body style={{ flex: 1, alignItems: 'center' }}>
+          <Title>Home</Title>
+        </Body>
+        <Right style={{ flex: 0.1 }} />
+      </Header>
+      <Content
+        contentContainerStyle={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Text>Home Screen</Text>
+      </Content>
+    </Container>
+  );
+}
+
+function ProfileScreen(navigation) {
+  return (
+    <Container>
+      <Header>
+        <Left style={{ flex: 0.1 }} />
+        <Body style={{ flex: 1, alignItems: 'center' }}>
+          <Title>Profile</Title>
+        </Body>
+        <Right style={{ flex: 0.1 }} />
+      </Header>
+      <Content
+        contentContainerStyle={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Text>Profile Screen</Text>
+      </Content>
+    </Container>
+  );
+}
+
+const AppDrawer = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen 
+        name= "Home"
+        component={HomeScreen}
+        options={{
+          drawerIcon: ({focused, color, size}) => {
+            <Icon name="home" style={{fontSize: size, color: color}} />
+          },
+        }}
+      />
+      <Drawer.Screen 
+        name= "Profile"
+        component={ProfileScreen}
+        options={{
+          drawerIcon: ({focused, color, size}) => {
+            <Icon name="people" style={{fontSize: size, color: color}} />
+          },
+        }}
+      />
+    </Drawer.Navigator>
+  );
+}
+
+function App() {
+  return (
+    <NavigationContainer>
+      <AppDrawer />
+    </NavigationContainer>
+  );
+}
+
+export default App;
+
+-----------------------------------------------------------------------------------------------------------
+
+//        <Button onPress={() => navigation.toggleDrawer()}><Text>Open Drawer</Text></Button>
+
+//        <Button onPress={() => navigation.toggleDrawer()}><Text>Open Drawer</Text></Button>
+
+        
