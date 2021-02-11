@@ -5,16 +5,24 @@ import {
     DrawerItemList
 } from "@react-navigation/drawer";
 import {
+    Body,
     Button,
     Container,
     Content,
     Footer,
+    H3,
     Header,
     Icon,
+    Left,
+    List,
+    ListItem,
     Right,
-    Text
+    Switch,
+    Text,
+    Thumbnail
 } from "native-base";
 import Animated from "react-native-reanimated";
+import { DrawerActions } from "@react-navigation/native";
 
 function SideBar({ progress, ...props }) {
     const translateX = Animated.interpolate(progress, {
@@ -25,12 +33,23 @@ function SideBar({ progress, ...props }) {
         <Container>
             <Header style={{ backgroundColor: '#ffffff', borderBottomWidth: 0 }}>
                 <Right>
-                    <Button transparent>
+                    <Button onPress={() => props.navigation.dispatch(DrawerActions.closeDrawer())}>
                         <Icon name="menu" />
                     </Button>
                 </Right>
             </Header>
-            <Content>
+            <Content contentContainerStyle={{flex: 1}}>
+                <ListItem thumbnail>
+                    <Left>
+                        <Thumbnail source={{
+                            uri: 'https://attiehandassociates.co.za/wp-content/uploads/2014/08/Profile-Pic-Demo.png'
+                        }} />
+                    </Left>
+                    <Body>
+                        <H3>M Waleed Khan</H3>
+                        <Text note>MERN stack Developer</Text>
+                    </Body>
+                </ListItem>
                 <DrawerContentScrollView {...props}>
                     <Animated.View style={{ transform: [{ translateX }] }}>
                         <DrawerItemList {...props} />
@@ -43,6 +62,16 @@ function SideBar({ progress, ...props }) {
                         />
                     </Animated.View>
                 </DrawerContentScrollView>
+                <List>
+                    <ListItem>
+                        <Body>
+                            <Text>Dark Mode</Text>
+                        </Body>
+                        <Right>
+                            <Switch value={true} />
+                        </Right>
+                    </ListItem>
+                </List>
             </Content>
             <Footer />
         </Container>

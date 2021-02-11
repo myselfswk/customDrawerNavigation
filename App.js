@@ -1,5 +1,5 @@
 import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { DrawerActions, NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import 'react-native-gesture-handler';
 import {
@@ -24,7 +24,13 @@ function HomeScreen({ navigation }) {
   return (
     <Container>
       <Header>
-        <Left style={{ flex: 0.1 }} />
+        <Left style={{ flex: 0.1 }}>
+          <Right>
+            <Button onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+              <Icon name="menu" />
+            </Button>
+          </Right>
+        </Left>
         <Body style={{ flex: 1, alignItems: 'center' }}>
           <Title>Home</Title>
         </Body>
