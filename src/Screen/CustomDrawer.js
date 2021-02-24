@@ -29,6 +29,7 @@ function SideBar({ progress, ...props }) {
         inputRange: [0, 1],
         outputRange: [-100, 0]
     });
+
     return (
         <Container>
             <Header style={{ backgroundColor: '#ffffff', borderBottomWidth: 0 }}>
